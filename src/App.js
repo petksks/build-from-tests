@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+// import PokemonVote from "./Components/Pokemons";
+import PokemonVote from "./components/PokemonVote";
+import UserInput from "./Components/UserInput";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 function App() {
+  const [name, setName] = useState("");
+
+  const handleNameSubmit = (submittedName) => {
+    setName(submittedName);
+  };
+  
+  console.log("app.js name: ", name)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <UserInput onSubmit={handleNameSubmit} />
+      <PokemonVote name={name} />
+      <Footer/>
     </div>
   );
 }
