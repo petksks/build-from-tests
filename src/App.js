@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-// import PokemonVote from "./Components/Pokemons";
 import PokemonVote from "./components/PokemonVote";
-import UserInput from "./Components/UserInput";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import UserInput from "./components/UserInput";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [name, setName] = useState("");
@@ -12,15 +11,17 @@ function App() {
   const handleNameSubmit = (submittedName) => {
     setName(submittedName);
   };
-  
-  console.log("app.js name: ", name)
-  
+
   return (
     <div className="App">
       <Header />
-      <UserInput onSubmit={handleNameSubmit} />
-      <PokemonVote name={name} />
-      <Footer/>
+      <div className="UserInput">
+        <UserInput onSubmit={handleNameSubmit} />
+      </div>
+      <div className="PokemonVote">
+        <PokemonVote name={name} />
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -6,6 +6,9 @@ const UserInput = ({ onSubmit }) => {
 
   const handleInputChange = (e) => {
     setName(e.target.value);
+    if (submitted) {
+      setSubmitted(false);  // Reset submitted status when name is changed
+    }
   };
 
   const handleSubmit = (e) => {
@@ -29,6 +32,7 @@ const UserInput = ({ onSubmit }) => {
         </label>
         <button type="submit">Submit</button>
       </form>
+      {submitted && name && <div>Welcome {name}!</div>}
     </>
   );
 };

@@ -13,24 +13,11 @@ function PokemonVote() {
     setPokemons(newPokemons);
   };
 
-  const handleNameChange = (index, newName) => {
-    const newPokemons = [...pokemons];
-    newPokemons[index].name = newName;
-    setPokemons(newPokemons);
-  };
-
   const renderPokemon = (pokemon, index) => (
     <div key={pokemon.name}>
       <h3>{pokemon.name}</h3>
       <p data-testid='vote-count'>Votes: {pokemon.votes}</p>
       <button onClick={() => handleVote(index)}>Vote</button>
-      <input 
-        placeholder='Enter new name' 
-        value={pokemon.name} 
-        onChange={(e) => handleNameChange(index, e.target.value)} 
-        data-testid={pokemon.name.toLowerCase() + '-input'}
-      />
-      <button onClick={() => handleNameChange(index)}>Change Name</button>
     </div>
   );
 
