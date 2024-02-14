@@ -14,11 +14,11 @@ const UserInput = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name.trim()) {
+      // If input is empty or whitespace only, do not submit
       return;
     }
     setSubmitted(true);
     onSubmit(name);
-    setName(""); 
     console.log("userinput name:", name);
   };
 
