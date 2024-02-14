@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from "react";
 import "./App.css";
 import PokemonVote from "./components/PokemonVote";
@@ -15,13 +16,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="UserInput">
+      <div className="UserInput" data-testid="user-input">
         <UserInput onSubmit={handleNameSubmit} />
       </div>
-      <div className="PokemonVote">
+      <div className="PokemonVote" data-testid="pokemon-vote">
         <PokemonVote name={name} />
       </div>
-      <Footer />
+      <Footer data-testid="footer" />
     </div>
   );
 }

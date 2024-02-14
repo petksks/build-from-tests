@@ -7,14 +7,18 @@ const UserInput = ({ onSubmit }) => {
   const handleInputChange = (e) => {
     setName(e.target.value);
     if (submitted) {
-      setSubmitted(false);  // Reset submitted status when name is changed
+      setSubmitted(false); // Reset submitted status when name is changed
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!name.trim()) {
+      return;
+    }
     setSubmitted(true);
     onSubmit(name);
+    setName(""); 
     console.log("userinput name:", name);
   };
 

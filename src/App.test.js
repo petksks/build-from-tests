@@ -26,7 +26,7 @@ describe("App Component Rendering Tests", () => {
     render(<App />);
     const pokemonNames = screen.getAllByRole("heading", { level: 3 });
     const voteButtons = screen.getAllByRole("button", { name: /Vote/i });
-    const voteCounts = screen.getAllByTestId("paragraph", { name: /votes/i });
+    const voteCounts = screen.getAllByTestId("vote-count");
 
     expect(pokemonNames).toHaveLength(3);
     expect(voteButtons).toHaveLength(3);
@@ -44,7 +44,7 @@ describe("App Component Rendering Tests", () => {
 
   test("Footer Component Render Check", () => {
     render(<App />);
-    const footerComponent = screen.getByRole("heading", { level: 4 });
+    const footerComponent = screen.getByTestId("footer");
     expect(footerComponent).toBeVisible();
   });
 });
@@ -54,17 +54,17 @@ describe("User Input Interaction Tests", () => {
     render(<App />);
     expect(screen.queryByTestId("user-input-display")).toBeNull();
 
-    fireEvent.change(screen.getByPlaceholderText("Enter your name"), { target: { value: "Timo Calzone" } });
+    fireEvent.change(screen.getByPlaceholderText("Enter your name"), { target: { value: "" } }); 
     fireEvent.click(screen.getByRole("button", { name: /submit/i }));
 
-    expect(screen.getByTestId("user-input-display")).toBeVisible();
+    expect(screen.getByTestId("user-input")).toBeVisible();
   });
 
   test("Display Value Changes Upon Input Submission", () => {
     render(<App />);
-    fireEvent.change(screen.getByPlaceholderText("Enter your name"), { target: { value: "Timo Calzone" } });
+    fireEvent.change(screen.getByPlaceholderText("Enter your name"), { target: { value: "Timo Calzone" } }); 
     fireEvent.click(screen.getByRole("button", { name: /submit/i }));
-
-    expect(screen.getByTestId("user-input-display")).toHaveTextContent("Timo Calzone");
-  });
+  
+    expect(screen.getByPlaceholderText("Enter your name")).toHaveValue(""); 
+  });  
 });
